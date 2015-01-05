@@ -1,0 +1,42 @@
+[
+  {
+        "title"       : "leico"
+      , "description" : null
+      , "type"        : "page"
+      , "contents"  : "./html/profile.html"
+  }
+  , {
+        "title"       : "craftman's wall"
+      , "description" : "11120 x 8431px A1"
+      , "type"        : "image"
+      , "contents"  : "./image/wall"
+      , "imagetype"   : "jpg"
+    }
+  , {
+        "title" : "human network"
+      , "description" : "11120 x 8431px A1"
+      , "type"        : "image"
+      , "contents"    : "./image/netwall"
+      , "imagetype"   : "jpg"
+    }
+  , {
+        "title" : "RAY.MTR"
+      , "description" : "8ch Mixer/Effector/Sampler/Sequencer/Slicer"
+      , "type"        : "page"
+      , "contents"    : "https://github.com/leico/RAY.MTR "
+    }
+  , {
+        "title" : "ray.sniff~"
+      , "description" : "record our Web field"
+      , "type"        : "page"
+      , "contents"    : "https://github.com/leico/ray.sniff-"
+    }
+  , {
+        "title" : "human network"
+      , "description" : "11120 x 8431px A1"
+      , "type"        : "image"
+      , "contents"    : "./image/netwall"
+      , "imagetype"   : "jpg"
+    }
+
+]
