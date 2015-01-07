@@ -40,3 +40,6 @@ ul{
   margin-left : 40pt;
 }
 
+a{
+  text-decoration: underline;
+}

@@ -4,8 +4,8 @@
 ((function(undefined){
   
   var $ns = $leico.$global;
-  var bg_table = ['wall', 'netwall'];
-  $ns.bg = './image/' + bg_table[ (Math.random() > 0.5) ? 1 : 0 ] + '/';
+  var bg_table = ['wall', 'netwall', 'colorful'];
+  $ns.bg = './image/' + bg_table[ Math.floor( Math.random() * bg_table.length ) ] + '/';
 
 })());
 
@@ -58,6 +58,7 @@
         , height : '100%'
         , backgroundImage    : 'url("' + bg + '")'
         , backgroundPosition : 'center center'
+        , backgroundRepeat   : 'no-repeat'
         , backgroundSize     : 'cover'
       })
   );
@@ -66,6 +67,12 @@
 
 })());
 
+/* ==================================== *
+ * init description                     *
+ * ==================================== */
+((function(undefined){
+  $('#description').hide();
+})());
 
 
 /* ==================================== *
@@ -168,9 +175,9 @@
           )
           .attr('id', $ns.works[i].title)
           .css({
-              position : sel.css('position')
-            , top      : sel.offset().top
-            , left     : sel.offset().left
+              position    : sel.css('position')
+            , top         : sel.offset().top
+            , left        : sel.offset().left
           })
           .click( iconClick )
         );
@@ -201,26 +208,109 @@
 
     var data = $ns.works[$(this).data('index')];
     switch(data.type){
-      case 'image': setImage( $(this), data ); break;
-      case 'page' : setPage ( $(this), data ); break;
+      case 'image'   : setImage  ( $(this), data ); break;
+      case 'html'    : setHtml   ( $(this), data ); break;
+      case 'page'    : setPage   ( $(this), data ); break;
+      case 'youtube' : setYoutube( $(this), data ); break;
     }
 
     $ns.scroll = $('#contents').scrollLeft();
 
-    $('#contents').fadeOut(2000);
+    $('#contents')   .fadeOut(2000);
+    $('#description').fadeOut(2000);
 
   }
 
   /* ========================================= *
    * setDescription(selector, data, position)  *
    * ========================================= */
-  function setDescription(sel, data, offset){
+  function setDescription(data){
 
+    $('#description')
+      .stop()
+      .hide()
+      .empty()
+      .append(function(){
+        if(data.description != null){
+          return $('<section>')
+            .append( $('<h3>').html  (data.title)       )
+            .append( $('<p>') .append(data.description) )
+        }
+        return undefined;
+      })
+      .addClass('center')
+      .fadeIn(600)
+      .click(function(){
+        $(this).fadeOut('fast', function(){
+          $(this).empty();
+        })
+      });
   }
-/* ==================================== *
- * setPage(selector, data)              *
- * ==================================== */
-  function setPage(sel, data){
+  /* ==================================== *
+   * setYoutube(selector, data)           *
+   * ==================================== */
+  function setYoutube(sel, data){
+    
+    if(data.contents == null) return;
+
+    var $ns = $leico.$global;
+
+    $('#bg')
+      .append(
+        $(data.contents)
+        .addClass('center')
+        .hide()
+        .stop()
+        .fadeIn(5000)
+      )
+      .click(function(){
+        
+        $(this)
+          .unbind('click')
+          .children('iframe')
+            .stop()
+            .fadeOut(2000, function(){ $(this).remove(); })
+          .end();
+
+        $('#contents')
+          .scrollLeft($ns.scroll)
+          .fadeIn(500);
+
+        setDescription(data);
+      });
+  }
+
+  /* ==================================== *
+   * setPage(selector, data)              *
+   * ==================================== */
+
+  function setPage(selector, data){
+    
+    if(data.contents == null) return;
+
+    
+    window.open(data.contents);
+
+
+    var $ns = $leico.$global;
+
+    $(window).focus(function(){
+      $(this).unbind('focus');
+
+      $('#contents')
+        .scrollLeft($ns.scroll)
+        .fadeIn(500);
+
+      setDescription(data);
+
+    })
+  }
+
+
+  /* ==================================== *
+   * setHtml(selector, data)              *
+   * ==================================== */
+  function setHtml(sel, data){
 
 
     if(data.contents == null) return;
@@ -230,7 +320,8 @@
     $('#bg').append(
         $('<iframe>').attr({
             src         : data.contents
-          , frameborder : '1'
+          , frameborder : '0'
+          , seamless : 'seamless'
         })
         .addClass('center')
         .css({
@@ -252,6 +343,8 @@
       $('#contents')
         .scrollLeft($ns.scroll)
         .fadeIn('fast', function(){});
+
+      setDescription(data);
 
     });
     
@@ -275,7 +368,9 @@
         .css({
             backgroundImage :  'url("' + bg + '")'
           , backgroundPosition : 'center center'
-          , backgroundSize     : 'cover'
+          , backgroundRepeat   : 'no-repeat'
+          , backgroundSize     : 'contain'
+          , backgroundColor    : '#000'
           , width  : '100%'
           , height : '100%'
         })
@@ -294,6 +389,8 @@
       $('#contents')
         .scrollLeft($ns.scroll)
         .fadeIn('fast', function(){});
+
+      setDescription(data);
     })
   }
 })());

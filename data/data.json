@@ -2,41 +2,53 @@
   {
         "title"       : "leico"
       , "description" : null
-      , "type"        : "page"
+      , "type"        : "html"
       , "contents"  : "./html/profile.html"
   }
   , {
         "title"       : "craftman's wall"
-      , "description" : "11120 x 8431px A1"
+      , "description" : "11120 x 8431px, 841 x 594mm A1<br />Apophysis, flam3"
       , "type"        : "image"
       , "contents"  : "./image/wall"
       , "imagetype"   : "jpg"
     }
   , {
         "title" : "human network"
-      , "description" : "11120 x 8431px A1"
+      , "description" : "11120 x 8431px, 841 x 594mm A1<br />Apophysis, flam3"
       , "type"        : "image"
       , "contents"    : "./image/netwall"
       , "imagetype"   : "jpg"
+    }
+  , {
+        "title" : "colorful"
+      , "description" : "live performance ad poster<br />7165 x 10138px, 728 x 1030mm B1<br />Blender, LuxRender"
+      , "type"        : "image"
+      , "contents"    : "./image/colorful"
+      , "imagetype"   : "jpg"
+    }
+  , {
+        "title" : "然 Zen"
+      , "description" : "Database design, programming<br />javascript, PHP<br />jQuery"
+      , "type"        : "page"
+      , "contents"    : "http://www.kitutuki.co.jp/zen_es/intro/intro.html"
     }
   , {
         "title" : "RAY.MTR"
-      , "description" : "8ch Mixer/Effector/Sampler/Sequencer/Slicer"
+      , "description" : "8ch Mixer/Effector/Sampler/Sequencer/Slicer<br />Max"
       , "type"        : "page"
-      , "contents"    : "https://github.com/leico/RAY.MTR "
+      , "contents"    : "https://cycling74.com/project/ray-mtr/"
     }
   , {
         "title" : "ray.sniff~"
-      , "description" : "record our Web field"
+      , "description" : "record our Web field<br />Max, C<br />libpcap, MaxSDK"
       , "type"        : "page"
-      , "contents"    : "https://github.com/leico/ray.sniff-"
+      , "contents"    : "https://cycling74.com/project/ray-sniff-record-our-web-field/"
     }
   , {
-        "title" : "human network"
-      , "description" : "11120 x 8431px A1"
-      , "type"        : "image"
-      , "contents"    : "./image/netwall"
-      , "imagetype"   : "jpg"
+        "title" : "@OSCtter"
+      , "description" : "Play with twitter over OSC<br />Max, C, javascript, PHP<br />jQuery, Twitter Streaming API, SoundCloud API, libcurl, MaxSDK<br />Vine"
+      , "type"        : "youtube"
+      , "contents"  :  "<iframe width=\"1280\" height=\"720\" src=\"\/\/www.youtube.com\/embed\/ckrZhHWd8f4?rel=0\" frameborder=\"0\" allowfullscreen><\/iframe>"
     }
 
 ]
