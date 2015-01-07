@@ -241,7 +241,9 @@
       .addClass('center')
       .fadeIn(600)
       .click(function(){
-        $(this).fadeOut('fast', function(){
+        $(this)
+        .unbind('click')
+        .fadeOut('fast', function(){
           $(this).empty();
         })
       });
